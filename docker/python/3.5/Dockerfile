@@ -11,7 +11,7 @@ ENV LANG C.UTF-8
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 97FC712E4C024BBEA48A61ED3A5CA953F73C700D
 
 ENV PYTHON_VERSION 3.5.0
-ENV RELEASE_VERSION b3
+ENV RELEASE_VERSION b4
 
 # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
 ENV PYTHON_PIP_VERSION 7.1.0
