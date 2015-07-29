@@ -1,21 +1,35 @@
 #!/usr/bin/env python3
 
-from multiprocessing import Pool
-from time import sleep
+from threading import Thread
+from multiprocessing import Process
+from time import sleep, time
 
-def snooze(name):
+def snooze():
     sleep(10)
-    print(name)
+
+def thread_snooze():
+    threads = []
+
+    for i in range(1000):
+        thread = Thread(target=snooze)
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
 
 def main():
-    pool = Pool(processes=1000) 
+    processes = []
 
-    for i in range(10000):
-        pool.apply_async(snooze, (i,))
+    for i in range(10):
+        process = Process(target=thread_snooze)
+        process.start()
+        processes.append(process)
 
-
-    pool.close()
-    pool.join()
+    for process in processes:
+        process.join()
 
 if __name__ == "__main__":
+    t0 = time()
     main()
+    print(time()-t0)
