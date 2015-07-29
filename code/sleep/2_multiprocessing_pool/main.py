@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
 
 from multiprocessing import Pool
-from time import sleep
+from time import sleep, time
 
 def snooze():
     sleep(10)
-    return 1
 
 def main():
-    pool = Pool(processes=16) 
+    pool = Pool(processes=10) 
     results = []
 
-    for i in range(10000):
+    for i in range(100):
         result = pool.apply_async(snooze)
         results.append(result)
-
 
     for result in results:
         result.get()
@@ -23,4 +21,6 @@ def main():
     pool.join()
 
 if __name__ == "__main__":
+    t0 = time()
     main()
+    print(time-t0)
