@@ -4,4 +4,4 @@ COPY ./main.py /opt/main.py
 WORKDIR /opt
 
 ENTRYPOINT ["python"]
-CMD ["main.py"]
+CMD ["-m", "cProfile", "-s", "tottime", "main.py"]
