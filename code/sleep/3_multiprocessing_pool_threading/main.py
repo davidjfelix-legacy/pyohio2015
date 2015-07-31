@@ -2,7 +2,7 @@
 
 from threading import Thread
 from multiprocessing import Process
-from time import sleep, time
+from time import sleep
 
 def snooze():
     sleep(10)
@@ -30,6 +30,4 @@ def main():
         process.join()
 
 if __name__ == "__main__":
-    t0 = time()
     main()
-    print(time()-t0)

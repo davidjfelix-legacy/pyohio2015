@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import asyncio
-from time import time
 
 @asyncio.coroutine
 def snooze():
@@ -21,6 +20,4 @@ def main():
     loop.close()
 
 if __name__ == "__main__":
-    t0 = time()
     main()
-    print(time()-t0)
